@@ -19,9 +19,8 @@
         });
 
         function fetchData() {
-            const proxyUrl = 'https://api.allorigins.win/raw?url=';
             const targetUrl = 'http://172.105.148.135/';
-            fetch(proxyUrl + targetUrl)
+            fetch(targetUrl)
                 .then(response => response.text())
                 .then(data => {
                     parseData(data);
