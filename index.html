@@ -38,9 +38,9 @@ function parseData(htmlString) {
         if (line.trim() !== '') { 
             const parts = line.split('<br>'); 
             if (parts.length > 1) {
-                let title = parts[0].replace(/<[^>]*>/g, '').trim(); 
+                let title = parts[0].replace(/<[^>]*>/g, '').replace(/\n/g, '').trim(); 
                 title = title.replace(' height', ''); 
-                const height = parts[1].trim(); 
+                const height = parts[1].replace(/\n/g, '').trim(); 
                 displayHtml += `<tr><td>${title}</td><td>${height}</td></tr>`; 
             }
         }
