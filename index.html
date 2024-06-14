@@ -18,16 +18,18 @@
             fetchData();
         });
 
-        function fetchData() {
-            const proxyUrl = 'https://throbbing-rain-bdd7.alicexbt.workers.dev/?url=';
-            const targetUrl = 'http://172.105.148.135/';
-            fetch(proxyUrl + targetUrl)
-                .then(response => response.text())
-                .then(data => {
-                    parseData(data);
-                })
-                .catch(error => console.error('Error fetching data:', error));
-        }
+function fetchData() {
+    const proxyUrl = 'https://throbbing-rain-bdd7.alicexbt.workers.dev/?url=';
+    const targetUrl = 'http://172.105.148.135/';
+    // Append a timestamp to the target URL
+    const urlWithCacheBuster = proxyUrl + encodeURIComponent(targetUrl + '?t=' + new Date().getTime());
+    fetch(urlWithCacheBuster)
+        .then(response => response.text())
+        .then(data => {
+            parseData(data);
+        })
+        .catch(error => console.error('Error fetching data:', error));
+}
 
 
 function parseData(jsonData) {
