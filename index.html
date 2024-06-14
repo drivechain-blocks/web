@@ -19,8 +19,9 @@
         });
 
         function fetchData() {
+            const proxyUrl = 'https://crossorigin.me/';
             const targetUrl = 'http://172.105.148.135/';
-            fetch(targetUrl)
+            fetch(proxyUrl + targetUrl)
                 .then(response => response.text())
                 .then(data => {
                     parseData(data);
