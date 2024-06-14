@@ -19,7 +19,7 @@
         });
 
         function fetchData() {
-            const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+            const proxyUrl = 'https://throbbing-rain-bdd7.alicexbt.workers.dev/?url=';
             const targetUrl = 'http://172.105.148.135/';
             fetch(proxyUrl + targetUrl)
                 .then(response => response.text())
