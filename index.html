@@ -29,9 +29,13 @@
                 .catch(error => console.error('Error fetching data:', error));
         }
 
-function parseData(htmlString) {
+
+function parseData(jsonData) {
     const dataDisplay = document.getElementById('dataDisplay');
-    htmlString = htmlString.replace(/\n/g, '');
+    // Assuming jsonData is a JSON string, parse it first
+    const dataObj = JSON.parse(jsonData);
+    // Extract the contents and remove all newline characters
+    let htmlString = dataObj.contents.replace(/\n/g, '');
     const lines = htmlString.split('<br><br>'); 
     let displayHtml = '<table><tr><th>Chain</th><th>Height</th></tr>';
 
@@ -50,6 +54,7 @@ function parseData(htmlString) {
     displayHtml += '</table>';
     dataDisplay.innerHTML = displayHtml; 
 }
+
     </script> 
 </body>
 </html>
