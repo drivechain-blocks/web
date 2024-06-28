@@ -38,3 +38,15 @@ body {
             height: auto; 
             margin-bottom: 20px; 
         }
+        .github-link {
+            font-size: 32px; 
+            color: #fff;
+            margin-top: 10px; 
+        }
+        .github-link:hover {
+            color: #4A90E2;
+        }
+        footer {
+            margin-top: 100px;
+            padding: 10px;
+        }        
