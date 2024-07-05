@@ -42,27 +42,18 @@
         let htmlString = dataObj.contents.replace(/\n/g, '');
         const lines = htmlString.split('<br><br>'); 
         let displayHtml = '<table><tr><th>Chain</th><th>Height</th></tr>';
-        let thunderHeight = '';
 
         lines.forEach(line => {
-            if (line.trim() !== '' && !line.includes('BitNames') && !line.includes('BitAssets')) { 
+            if (line.trim() !== '') { 
                 const parts = line.split('<br>'); 
-                if (parts.length === 2) {
+                if (parts.length > 1) {
                     let title = parts[0].replace(/<[^>]*>/g, '').trim(); 
                     title = title.replace(' height', ''); 
                     const height = parts[1].trim(); 
                     displayHtml += `<tr><td>${title}</td><td>${height}</td></tr>`; 
-                    if (title === 'Thunder') {
-                        thunderHeight = height;
-                    }
                 }
             }
         });
-
-        if (!thunderHeight) {
-            thunderHeight = htmlString.match(/\d+/g).pop();
-        }
-        displayHtml += `<tr><td>Thunder</td><td>${thunderHeight}</td></tr>`;
 
         displayHtml += '</table>';
         dataDisplay.innerHTML = displayHtml; 
